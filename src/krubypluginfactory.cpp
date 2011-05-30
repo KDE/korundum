@@ -39,6 +39,7 @@
 extern "C" {
 extern VALUE rb_load_path;
 extern VALUE qt_internal_module;
+void Init_prelude(void);
 }
 
 //
@@ -160,6 +161,12 @@ QObject *KRubyPluginFactory::create(const char *iface, QWidget *parentWidget, QO
     if (firstTime) {
         ruby_init_loadpath();
     }
+
+#if RUBY_VERSION >= 0x10900
+    VALUE gem = rb_define_module("Gem");
+    rb_const_set(gem, rb_intern("Enable"), Qtrue);
+    Init_prelude(); 
+#endif
 
     ruby_incpush(QFile::encodeName(program.path()));
 
@@ -331,6 +338,12 @@ int kdemain(int argc, char **argv)
     if (firstTime) {
         ruby_init_loadpath();
     }
+    
+#if RUBY_VERSION >= 0x10900
+    VALUE gem = rb_define_module("Gem");
+    rb_const_set(gem, rb_intern("Enable"), Qtrue);
+    Init_prelude();                                             
+#endif
 
     ruby_incpush(QFile::encodeName(program.path()));
 
