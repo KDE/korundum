@@ -24,7 +24,7 @@ find_package(Smoke REQUIRED
         SopranoClient
         SopranoServer )
 include(KDE4Defaults)
-include_directories( ${KDE4_INCLUDES} ${SMOKE_INCLUDE_DIR} ${QTRUBY_INCLUDE_DIR} )
+include_directories( ${KDE4_INCLUDES} ${SMOKE_INCLUDE_DIR} ${QTRUBY_INCLUDE_DIR} ${SMOKE_KHTML_INCLUDE_DIR} )
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${SMOKE_CMAKE_MODULE_DIR})
 include(MacroOptionalFindPackage)
