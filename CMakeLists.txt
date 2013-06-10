@@ -22,7 +22,8 @@ find_package(Smoke REQUIRED
         Solid
         Soprano
         SopranoClient
-        SopranoServer )
+        SopranoServer
+        Nepomuk )
 include(KDE4Defaults)
 include_directories( ${KDE4_INCLUDES} ${SMOKE_INCLUDE_DIR} ${QTRUBY_INCLUDE_DIR} ${SMOKE_QTCORE_INCLUDE_DIR} ${SMOKE_KDECORE_INCLUDE_DIR} )
 
