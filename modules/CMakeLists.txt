@@ -31,11 +31,11 @@ add_subdirectory(solid)
 add_subdirectory(plasma)
 
 # For nepomuk, we also must have found soprano, since soprano headers are used:
-if(Soprano_FOUND AND Nepomuk_FOUND AND Smoke_NEPOMUK_FOUND)
+if(Soprano_FOUND AND Nepomuk_FOUND AND SMOKE_NEPOMUK_FOUND)
     set(BUILD_Nepomuk TRUE)
-else(Soprano_FOUND AND Nepomuk_FOUND AND Smoke_NEPOMUK_FOUND)
+else(Soprano_FOUND AND Nepomuk_FOUND AND SMOKE_NEPOMUK_FOUND)
     set(BUILD_Nepomuk FALSE)
-endif(Soprano_FOUND AND Nepomuk_FOUND AND Smoke_NEPOMUK_FOUND)
+endif(Soprano_FOUND AND Nepomuk_FOUND AND SMOKE_NEPOMUK_FOUND)
 macro_optional_add_bindings(BUILD_Nepomuk "Nepomuk" nepomuk)
 
 macro_optional_add_bindings(OKULAR_FOUND "Okular" okular)
