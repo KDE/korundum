@@ -6,7 +6,7 @@ set(rubyokular_LIBRARY_SRC okular.cpp okularhandlers.cpp)
 add_library(rubyokular MODULE ${rubyokular_LIBRARY_SRC})
 target_link_libraries(rubyokular
     ${OKULAR_LIBRARIES}
-    smokeokular
+    ${SMOKE_OKULAR_LIBRARY}
     ${QTRUBY4SHARED_LIBRARY}
     ${RUBY_LIBRARY}
     ${QT_QTCORE_LIBRARY}

@@ -7,7 +7,7 @@ add_library(rubynepomuk MODULE ${rubynepomuk_LIBRARY_SRC})
 target_link_libraries(rubynepomuk
     ${NEPOMUK_LIBRARIES}
     ${SOPRANO_LIBRARIES}
-    smokenepomuk
+    ${SMOKE_NEPOMUK_LIBRARY}
     ${SMOKE_BASE_LIBRARY}
     ${SMOKE_QTCORE_LIBRARY}
     ${QTRUBY4SHARED_LIBRARY}

@@ -8,7 +8,7 @@ add_library(rubyakonadi MODULE ${rubyakonadi_LIBRARY_SRC})
 target_link_libraries(rubyakonadi
     ${KDEPIMLIBS_AKONADI_LIBS}
     ${KDEPIMLIBS_AKONADI_KMIME_LIBS}
-    smokeakonadi
+    ${SMOKE_AKONADI_LIBRARY}
     ${SMOKE_BASE_LIBRARY}
     ${QTRUBY4SHARED_LIBRARY}
     ${RUBY_LIBRARY}
