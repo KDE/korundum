@@ -39,7 +39,6 @@
 extern "C" {
 extern VALUE rb_load_path;
 extern VALUE qt_internal_module;
-void Init_prelude(void);
 }
 
 //
@@ -165,7 +164,8 @@ QObject *KRubyPluginFactory::create(const char *iface, QWidget *parentWidget, QO
 #if RUBY_VERSION >= 0x10900
     VALUE gem = rb_define_module("Gem");
     rb_const_set(gem, rb_intern("Enable"), Qtrue);
-    Init_prelude(); 
+    char *opts[] = { "ruby", "-e;" };
+    ruby_options(2, opts);
 #endif
 
     ruby_incpush(QFile::encodeName(program.path()));
@@ -342,7 +342,8 @@ int kdemain(int argc, char **argv)
 #if RUBY_VERSION >= 0x10900
     VALUE gem = rb_define_module("Gem");
     rb_const_set(gem, rb_intern("Enable"), Qtrue);
-    Init_prelude();                                             
+    char *opts[] = { "ruby", "-e;" };
+    ruby_options(2, opts);
 #endif
 
     ruby_incpush(QFile::encodeName(program.path()));
