@@ -6,7 +6,9 @@ find_package(Ruby REQUIRED)
 find_package(KDE4 REQUIRED)
 find_package(QtRuby4 REQUIRED)
 find_package(Smoke REQUIRED 
-    COMPONENTS KdeCore 
+    COMPONENTS Akonadi
+        Kate
+        KdeCore
         KdeUi 
         KFile 
         KHtml 
@@ -16,6 +18,7 @@ find_package(Smoke REQUIRED
         KParts
         KTextEditor
         KUtils
+        Okular
         Phonon
         Plasma
         QtCore
