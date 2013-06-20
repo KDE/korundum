@@ -7,7 +7,6 @@ find_package(KDE4 REQUIRED)
 find_package(QtRuby4 REQUIRED)
 find_package(Smoke REQUIRED 
     COMPONENTS Akonadi
-        Kate
         KdeCore
         KdeUi 
         KFile 
