@@ -6,8 +6,7 @@ find_package(Ruby REQUIRED)
 find_package(KDE4 REQUIRED)
 find_package(QtRuby4 REQUIRED)
 find_package(Smoke REQUIRED 
-    COMPONENTS Akonadi
-        KdeCore
+    COMPONENTS KdeCore
         KdeUi 
         KFile 
         KHtml 
@@ -17,7 +16,6 @@ find_package(Smoke REQUIRED
         KParts
         KTextEditor
         KUtils
-        Okular
         Phonon
         Plasma
         QtCore
@@ -26,6 +24,7 @@ find_package(Smoke REQUIRED
         SopranoClient
         SopranoServer
         Nepomuk )
+find_package(Smoke COMPONENTS Akonadi Okular Kate)
 include(KDE4Defaults)
 include_directories( ${KDE4_INCLUDES} ${SMOKE_INCLUDE_DIR} ${QTRUBY_INCLUDE_DIR} ${SMOKE_QTCORE_INCLUDE_DIR} ${SMOKE_KDECORE_INCLUDE_DIR} )
 
