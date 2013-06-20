@@ -17,11 +17,11 @@ macro_log_feature(OKULAR_FOUND "Okular" "Okular libraries" "http://www.kde.org" 
 
 macro_optional_add_bindings(Soprano_FOUND "Soprano" soprano)
 
-if(KDEPIMLIBS_FOUND AND Akonadi_FOUND)
+if(KDEPIMLIBS_FOUND AND Akonadi_FOUND AND SMOKE_AKONADI_FOUND)
     set(BUILD_Akonadi TRUE)
-else(KDEPIMLIBS_FOUND AND Akonadi_FOUND)
+else(KDEPIMLIBS_FOUND AND Akonadi_FOUND AND SMOKE_AKONADI_FOUND)
     set(BUILD_Akonadi FALSE)
-endif(KDEPIMLIBS_FOUND AND Akonadi_FOUND)
+endif(KDEPIMLIBS_FOUND AND Akonadi_FOUND AND SMOKE_AKONADI_FOUND)
 macro_optional_add_bindings(BUILD_Akonadi "Akonadi" akonadi)
 
 add_subdirectory(kio)
@@ -38,11 +38,21 @@ else(Soprano_FOUND AND Nepomuk_FOUND AND SMOKE_NEPOMUK_FOUND)
 endif(Soprano_FOUND AND Nepomuk_FOUND AND SMOKE_NEPOMUK_FOUND)
 macro_optional_add_bindings(BUILD_Nepomuk "Nepomuk" nepomuk)
 
-macro_optional_add_bindings(OKULAR_FOUND "Okular" okular)
+if(OKULAR_FOUND AND SMOKE_OKULAR_FOUND)
+    set(BUILD_Okular TRUE)
+else(OKULAR_FOUND AND SMOKE_OKULAR_FOUND)
+    set(BUILD_Okular FALSE)
+endif(OKULAR_FOUND AND SMOKE_OKULAR_FOUND)
+macro_optional_add_bindings(BUILD_Okular "Okular" okular)
 
 find_library(KATEINTERFACES_LIBRARY kateinterfaces HINTS ${KDE4_LIB_DIR})
 find_path(KATE_INCLUDE_DIR kate/plugin.h HINTS ${KDE4_INCLUDE_DIR})
 
-macro_optional_add_bindings(KATE_INCLUDE_DIR "Kate" kate)
+if(KATE_INCLUDE_DIR AND SMOKE_KATE_FOUND)
+    set(BUILD_Kate TRUE)
+else(KATE_INCLUDE_DIR AND SMOKE_KATE_FOUND)
+    set(BUILD_Kate FALSE)
+endif(KATE_INCLUDE_DIR AND SMOKE_KATE_FOUND)
+macro_optional_add_bindings(BUILD_Kate "Kate" kate)
 
 macro_display_bindings_log()
