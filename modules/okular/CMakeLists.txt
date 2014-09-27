@@ -1,5 +1,5 @@
 include_directories( ${CMAKE_SOURCE_DIR}/generator ${RUBY_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/ruby/qtruby/src)
-INCLUDE_DIRECTORIES (${QT_INCLUDES})
+INCLUDE_DIRECTORIES( ${QT_INCLUDES} ${OKULAR_INCLUDE_DIR} )
 
 set(rubyokular_LIBRARY_SRC okular.cpp okularhandlers.cpp)
 
