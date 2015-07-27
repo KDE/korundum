@@ -24,6 +24,15 @@ set(application_SRCS
 
 kde4_add_library(korundum4 SHARED ${korundum_LIB_SRCS})
 
+find_library(SMOKE_KDECORE_LIBRARY smokekdecore)
+find_library(SMOKE_KDEUI_LIBRARY smokekdeui)
+find_library(SMOKE_KIO_LIBRARY smokekio)
+find_library(SMOKE_KPARTS_LIBRARY smokekparts)
+find_library(SMOKE_KFILE_LIBRARY smokekfile)
+find_library(SMOKE_KNEWSTUFF2_LIBRARY smokeknewstuff2)
+find_library(SMOKE_KNEWSTUFF3_LIBRARY smokeknewstuff3)
+find_library(SMOKE_KUTILS_LIBRARY smokekutils)
+
 target_link_libraries(korundum4 
     ${QT_QTNETWORK_LIBRARY} 
     ${QT_QTSQL_LIBRARY} 
@@ -38,14 +47,14 @@ target_link_libraries(korundum4
     ${KDE4_KUTILS_LIBS}
     ${RUBY_LIBRARY}
     ${SMOKE_BASE_LIBRARY}
-    smokekdecore 
-    smokekdeui 
-    ${SMOKE_KIO_LIBRARY} 
-    smokekparts 
-    smokekfile 
-    smokeknewstuff2 
-    smokeknewstuff3 
-    smokekutils      
+    ${SMOKE_KDECORE_LIBRARY}
+    ${SMOKE_KDEUI_LIBRARY}
+    ${SMOKE_KIO_LIBRARY}
+    ${SMOKE_KPARTS_LIBRARY}
+    ${SMOKE_KFILE_LIBRARY}
+    ${SMOKE_KNEWSTUFF2_LIBRARY}
+    ${SMOKE_KNEWSTUFF3_LIBRARY}
+    ${SMOKE_KUTILS_LIBRARY}
     ${QTRUBY4SHARED_LIBRARY})
 
 set_target_properties(korundum4 PROPERTIES PREFIX "")
