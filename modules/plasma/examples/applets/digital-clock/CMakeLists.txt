@@ -7,7 +7,7 @@ if(RBUIC4)
 	ADD_CUSTOM_COMMAND(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/digital_clock_config.rb COMMAND ${RBUIC4} ${UI_CLOCKCONFIG} -o ${CMAKE_CURRENT_BINARY_DIR}/digital_clock_config.rb COMMENT "Generating digital_clock_config.rb")
 	ADD_CUSTOM_TARGET(digital_clock_config ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/digital_clock_config.rb)
 	ADD_CUSTOM_COMMAND(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/calendar.rb COMMAND ${RBUIC4} ${UI_CALENDAR} -o ${CMAKE_CURRENT_BINARY_DIR}/calendar.rb COMMENT "Generating calendar.rb")
-	ADD_CUSTOM_TARGET(calendar ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/calendar.rb)
+	ADD_CUSTOM_TARGET(digital_clock_calendar ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/calendar.rb)
 
 	include_directories( ${RUBY_INCLUDE_DIRS} )
 

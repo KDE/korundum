@@ -489,7 +489,7 @@ static void preProcessDefault( QString &defaultValue, const QString &name,
       rb << "  default" << name << " = []" << endl;
       if (!defaultValue.isEmpty())
       {
-        QStringList defaults = defaultValue.split( "," );
+        const QStringList defaults = defaultValue.split( "," );
         QStringList::ConstIterator it;
         for (it = defaults.begin(); it != defaults.end(); ++it) {
           rb << "  default" << name << " << " << *it << "" << endl;
@@ -1333,9 +1333,9 @@ int main( int argc, char **argv )
     // enums
     QList<CfgEntry*>::ConstIterator itEntry;
 
-    for (itEntry = entries.begin(); itEntry != entries.end(); ++itEntry) {
+    for (itEntry = entries.constBegin(); itEntry != entries.constEnd(); ++itEntry) {
         const CfgEntry::Choices &choices = (*itEntry)->choices();
-        QList<CfgEntry::Choice> chlist = choices.choices;
+        const QList<CfgEntry::Choice> chlist = choices.choices;
 
         if (!chlist.isEmpty()) {
             QStringList values;
@@ -1447,7 +1447,7 @@ int main( int argc, char **argv )
 
     rb << endl;
 
-    for (itEntry = entries.begin(); itEntry != entries.end(); ++itEntry) {
+    for (itEntry = entries.constBegin(); itEntry != entries.constEnd(); ++itEntry) {
         QString n = (*itEntry)->name();
         QString t = (*itEntry)->type();
 
@@ -1545,8 +1545,8 @@ int main( int argc, char **argv )
         rb << (parameters.isEmpty() ? "" : ", ");
     }
 
-    for (QList<Param>::ConstIterator it = parameters.begin(); it != parameters.end(); ++it) {
-        if (it != parameters.begin()) {
+    for (QList<Param>::ConstIterator it = parameters.constBegin(); it != parameters.constEnd(); ++it) {
+        if (it != parameters.constBegin()) {
             rb << ", ";
         }
         rb << paramName((*it).name);
@@ -1566,14 +1566,14 @@ int main( int argc, char **argv )
     rb << ")" << endl;
 
     // Store parameters
-    for (QList<Param>::ConstIterator it = parameters.begin(); it != parameters.end(); ++it) {
+    for (QList<Param>::ConstIterator it = parameters.constBegin(); it != parameters.constEnd(); ++it) {
         rb << "    @param" << paramName((*it).name);
         rb << " = Qt::Variant.fromValue(" << paramName((*it).name) << ")" << endl;
     }
 
     QString group;
 
-    for (itEntry = entries.begin(); itEntry != entries.end(); ++itEntry) {
+    for (itEntry = entries.constBegin(); itEntry != entries.constEnd(); ++itEntry) {
         if ((*itEntry)->group() != group) {
             group = (*itEntry)->group();
             rb << endl;
@@ -1598,7 +1598,7 @@ int main( int argc, char **argv )
 
     group.clear();
 
-    for (itEntry = entries.begin(); itEntry != entries.end(); ++itEntry) {
+    for (itEntry = entries.constBegin(); itEntry != entries.constEnd(); ++itEntry) {
         if ((*itEntry)->group() != group) {
             if (!group.isEmpty()) {
                 rb << endl;
@@ -1616,7 +1616,7 @@ int main( int argc, char **argv )
             rb << "    values" << (*itEntry)->name() << " = []" << endl;
             QList<CfgEntry::Choice> choices = (*itEntry)->choices().choices;
             QList<CfgEntry::Choice>::ConstIterator it;
-            for (it = choices.begin(); it != choices.end(); ++it) {
+            for (it = choices.constBegin(); it != choices.constEnd(); ++it) {
                 rb << "    choice = ItemEnum::Choice.new" << endl;
                 rb << "    choice.name = \"" << (*it).name << "\"" << endl;
                 if (setUserTexts) {
